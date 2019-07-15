@@ -113,9 +113,9 @@ _From this point onward, if I close the browser connection with my server, I won
 
 
 
-_From now on, we can login using with the grader user from your OS using:_ `ssh grader@PUBLIC-IP -p 2200 -i ~/.ssh/MY-KEY-FILE`
+_From now on, we can login from your OS using Bash with the grader user:_ `ssh grader@PUBLIC-IP -p 2200 -i PATH-TO-MY-KEY-FILE`
 
-_In my case, **PUBLIC-IP** is `34.201.53.27` and **MY-KEY-FILE** is `grader`._
+_In my case, **PUBLIC-IP** is `34.201.53.27` and **PATH-TO-MY-KEY-FILE** is `~/.ssh/grader`._
 
 
 
@@ -147,7 +147,8 @@ _My server was already set to UTC, thus, steps 2-3 were unnecessary._
 
 #### Install `Apache` and `mod_wsgi` for python 3
 
-	1. For `Apache`: `sudo apt-get install apache2`
+1. For `Apache`: `sudo apt-get install apache2`
+
  	2. For `mod_wsgi`: `sudo apt-get install libapache2-mod-wsgi`
 
 
@@ -156,7 +157,7 @@ _My server was already set to UTC, thus, steps 2-3 were unnecessary._
 
 1. Instal **PostgreSQL** with `sudo apt-get install postgresql`
 
-2. To create a new database user name `catalog` with limited permissions to my catalog application database: 
+2. To create a new database user named `catalog` with limited permissions to my catalog application database: 
 
    1. Login as **postgres**: `sudo su - postgres`
 
@@ -171,7 +172,7 @@ _My server was already set to UTC, thus, steps 2-3 were unnecessary._
 
    4. Set password for the user **catalog**: `postgres=# ALTER ROLE catalog WITH PASSWORD 'SECRET-MAGIC-WORD';`
 
-   5.  Give full access to the database **themehospitals** to the user **catalog**: ``postgres=# GRANT ALL PRIVILEGES ON DATABASE themehospitals TO catalog;`
+   5.  Give full access to the database **themehospitals** to the user **catalog**: `postgres=# GRANT ALL PRIVILEGES ON DATABASE themehospitals TO catalog;`
 
    6. Exit PostgreSQL shell: `postgres=# \q`
 
@@ -200,7 +201,7 @@ _My server was already set to UTC, thus, steps 2-3 were unnecessary._
 #### Make necessary modifications on Item Catalog project files
 
 1. Rename **hospitals.py** to `__init__.py` with `sudo mv hospitals.py __init__.py`
-2. Edit **initiate_database.py**, **fill_database.y**, and the now rename `__init.py__`, and change all occurrences of **'sqlite:///themehospitals.db'** to `'postgresql://catalog:password@localhost/themehospitals'`, editing the files with: `sudo nano 'FILE-NAME'`
+2. Edit **initiate_database.py**, **fill_database.y**, and the now renamed `__init.py__`, and change all occurrences of **'sqlite:///themehospitals.db'** to `'postgresql://catalog:password@localhost/themehospitals'`, editing the files with: `sudo nano 'FILE-NAME'`
 
 
 
@@ -217,12 +218,12 @@ _Remember: the password was given in the "Notes to Reviewer field"._
 
 #### Initiate Item Catalog database
 
-1. To create the database: `sudo python3 initiate_database.py`
-2. To fill the database: `sudo python3 fill_database.py`
+1. To create the database: `sudo python initiate_database.py`
+2. To fill the database: `sudo python fill_database.py`
 
 
 
-_Remember, to understand why it's necessary to run two *.py to get this project started, refer to the [original README](https://github.com/mguidoti/fsnd-p4-item_catalog)._
+_Remember, to understand why it's necessary to run two *.py to get this project started, refer to the [original README](https://github.com/mguidoti/FSND-p4-item_catalog/blob/master/README.md)._
 
 
 
@@ -279,7 +280,7 @@ _Remember, to understand why it's necessary to run two *.py to get this project 
 
 
 
-_The application.secret_key is correctly provided above. I know, I know. Should have changed it, but I didn't, and now it looks like a fake or dummy secret key but it's the real one!_
+_The application.secret_key is correctly provided above. I know, I know... I should have changed it, but I didn't, and now it looks like a fake/dummy secret key but it's the real one!_
 
 
 
@@ -292,7 +293,7 @@ _The application.secret_key is correctly provided above. I know, I know. Should 
 
 #### Logging
 
-If something breaks or go wrong, you can access a log of this application with the following command:
+If something breaks or go wrong, you can access a log for this application with the following command:
 
 ```
 sudo tail -f /var/log/apache2/error.log 
