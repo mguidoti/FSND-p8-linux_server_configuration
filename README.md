@@ -48,6 +48,11 @@ The [Udacity's Get Started on Lighsail](https://classroom.udacity.com/nanodegree
 
 1. Use `sudo nano /etc/ssh/sshd_config` to open the file and edit line 4 from **Port 22** to **Port 2200**. Save and quit nano.
 2. Reload SSH service: `sudo service ssh restart`
+3. On your instance dashboard, **Networking** tab, add a Custom TCP application with Port range = 2200 to your instance's Firewall.
+
+
+
+_From this point onward, if I close the browser connection with my server, I won't be able to come back. Thus, I downloaded [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), my default private key from Lightsail, and managed to continue with the next steps from this direct connetion through PuTTY._
 
 
 
@@ -55,7 +60,7 @@ The [Udacity's Get Started on Lighsail](https://classroom.udacity.com/nanodegree
 
 1. Check the current UFW status: `sudo ufw status`
 
-   It's expected that the UFW is **disable**;
+   It's expected that the UFW is **disabled**;
 
 2. Block all incoming requests initially: `sudo ufw default deny incoming` 
 
@@ -71,24 +76,22 @@ The [Udacity's Get Started on Lighsail](https://classroom.udacity.com/nanodegree
 
 8. Check UFW states once again: `sudo ufw status`
 
-9. On your instance dashboard, **Networking** tab, add a Custom TCP application with Port range = 2200 to your instance's Firewall.
-
-
-
-_From this point onward, if I close the browser connection with my server, I won't be able to come back. Thus, I downloaded [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), my default private key from Lightsail, and managed to continue with the next steps from this direct connetion through PuTTY._
 
 
 
 #### Give `grader` access
 
 1. Create a new user account named **grader**: `sudo adduser grader`
+
 2. Give **grader** the permission to **sudo**: 
    1. Open **/etc/sudoers** to check if it includes `#includedir /etc/sudoers.d` (usually on its last line), or include it if absent: `sudo nano /etc/sudoers`
-   2. Create a file named **grader** on **/etc/sudoers.d**: `sudo touch /etc/sudoers.d/grader`
+   2. Create a file named **grader** in **/etc/sudoers.d**: `sudo touch /etc/sudoers.d/grader`
    3. Check if the file was correctly created: `sudo ls -al /etc/sudoers.d`
    4. Open the recently created file (**/etc/sudoers.d/grader**) with `sudo nano /etc/sudoers.d/grader` and add a single line containing `grader ALL=(ALL:ALL) ALL` , save the file
    5. Check if the file was correctly saved: `sudo cat /etc/sudoers.d/grader`
-3. Create an SSH key pair for **grader** using the **ssh-keygen** tool.
+   
+3. Create an SSH key pair for **grader** using **ssh-keygen**.
+   
    a. On local machine:
    
       1. Create an SSH key pair for grader on my local machine: `ssh-keygen`
@@ -97,15 +100,16 @@ _From this point onward, if I close the browser connection with my server, I won
       2. Read and copy the content of the recently created grader.pub: `cat ~/ssh/grader.pub`
    
    b. On server:
-      3. Create a **/home/grader/.ssh** folder: `sudo mkdir /home/grader/.ssh`
-      4. Create an **authorized_keys** file inside the **/.ssh** folder: `sudo touch /home/grader/.ssh/authorized_keys` 
-      5. Edit the recently created file to add the copied SSH key, not forgetting to save after it: `sudo nano /home/grader/.ssh/authorized_keys`
-      6. Check if the file now contains the key: `sudo cat /home/grader/.ssh/authorized_keys`
-      7. Change ownership status for **/.ssh** folder: `sudo chown grader:grader /home/grader/.ssh` 
-      8. Check if the user **grader** is the owner of the folder **/.ssh**: `sudo ls -al /home/grader`
-      9. Change the credentials of **/.ssh** folder: `sudo chmod 700 /home/grader/.ssh`
-      10. Change the **/.ssh/authorized_keys** credentials: `sudo chmod 644 /home/grader/.ssh/authorized_keys`
-      11. Reload the SSH service once again: `sudo service ssh restart`
+   
+   1. Create a **/home/grader/.ssh** folder: `sudo mkdir /home/grader/.ssh`
+   2. Create an **authorized_keys** file inside the **/.ssh** folder: `sudo touch /home/grader/.ssh/authorized_keys` 
+   3. Edit the recently created file to add the copied SSH key, not forgetting to save after it: `sudo nano /home/grader/.ssh/authorized_keys`
+   4. Check if the file now contains the key: `sudo cat /home/grader/.ssh/authorized_keys`
+   5. Change ownership status for **/.ssh** folder: `sudo chown grader:grader /home/grader/.ssh` 
+   6. Check if the user **grader** is the owner of the folder **/.ssh**: `sudo ls -al /home/grader`
+   7. Change the credentials of **/.ssh** folder: `sudo chmod 700 /home/grader/.ssh`
+   8. Change the **/.ssh/authorized_keys** credentials: `sudo chmod 644 /home/grader/.ssh/authorized_keys`
+   9. Reload the SSH service once again: `sudo service ssh restart`
 
 
 
