@@ -1,0 +1,5 @@
+# My .gitignore #
+###################
+
+# Ignore AWS Lightsail Keys
+/lightsail_keys/*
