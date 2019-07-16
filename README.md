@@ -36,7 +36,7 @@ The [Udacity's Get Started on Lighsail](https://classroom.udacity.com/nanodegree
 
 1. Update package source list: `sudo apt-get update`
 
-2. Update all installed packages: `sudo apt-get upgrade`
+2. Update all installed packages: `sudo apt-get dist-upgrade`
 
    When asked, choose to install the "package maintainer's version".
 
@@ -354,3 +354,8 @@ The following sources were consulted in order to finish this project:
 [How to connect to Amazon LightSail instance from Windows 10](https://manjaro.site/how-to-connect-to-amazon-lightsail-from-windows/)
 
 [How to Set Up Time Synchronization on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-16-04)
+
+[What is the difference between apt-get update and upgrade?](https://askubuntu.com/questions/94102/what-is-the-difference-between-apt-get-update-and-upgrade)
+
+[Ubuntu Server message says packages can be updated, but apt-get does not update any duplicate](https://serverfault.com/questions/265410/ubuntu-server-message-says-packages-can-be-updated-but-apt-get-does-not-update)
+
