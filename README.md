@@ -22,7 +22,7 @@ The configuration involved creating a new user, giving it the right credentials,
 
 **App URL:** ~~http://34.201.53.27.xip.io~~
 
-_The server was killed in order to void unnecessary billing._
+_The server was killed in order to avoid unnecessary billing._
 
 
 ### Configuration Steps
