@@ -16,12 +16,13 @@ The configuration involved creating a new user, giving it the right credentials,
 
 ### Server Basic Information
 
-**Public IP:** 34.201.53.27
+**Public IP:** ~~34.201.53.27~~
 
 **SSH port:** 2200
 
-**App URL:** http://34.201.53.27.xip.io
+**App URL:** ~~http://34.201.53.27.xip.io~~
 
+_The server was killed in order to void unnecessary billing._
 
 
 ### Configuration Steps
